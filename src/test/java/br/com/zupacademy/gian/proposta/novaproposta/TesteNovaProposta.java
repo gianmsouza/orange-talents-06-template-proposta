@@ -42,7 +42,7 @@ public class TesteNovaProposta {
 	public void deveCriarUmaNovaProposta() throws Exception {
 		mockMvc.perform(post("/proposta")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(toJson(new NovaPropostaRequest("08843486950", "gian@gian.com", "Gian",
+				.content(toJson(new NovaPropostaRequest("67935334013", "gian@gian.com", "Gian",
 						"Rua dos Alfedeiros", new BigDecimal(2500.00)))))
 				.andExpect(MockMvcResultMatchers.status().isCreated());
 
@@ -56,6 +56,18 @@ public class TesteNovaProposta {
 
 		assertTrue(propostas.size() == 1);
 		assertEquals("Gian", proposta.getNome());
+	}
+	
+	@Test
+	public void naoDeveCriarUmaNovaPropostaSeDocumentoJaExiste() throws Exception {
+		Proposta proposta = new Proposta("67935334013", "email@email", "nome", "endereco", new BigDecimal(2500.0));
+		manager.persist(proposta);
+		
+		mockMvc.perform(post("/proposta")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(toJson(new NovaPropostaRequest("67935334013", "gian@gian.com", "Gian",
+						"Rua dos Alfedeiros", new BigDecimal(2500.00)))))
+				.andExpect(MockMvcResultMatchers.status().isUnprocessableEntity());
 	}
 
 	private String toJson(NovaPropostaRequest request) throws JsonProcessingException {

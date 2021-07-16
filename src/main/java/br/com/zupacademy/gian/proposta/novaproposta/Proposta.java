@@ -48,4 +48,8 @@ public class Proposta {
 	public String getNome() {
 		return nome;
 	}
+	
+	public String getDocumento() {
+		return documento;
+	}
 }
