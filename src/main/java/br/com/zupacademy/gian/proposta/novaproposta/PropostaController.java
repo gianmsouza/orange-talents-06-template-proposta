@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.zupacademy.gian.proposta.compartilhado.ErroDeFormularioDto;
+import br.com.zupacademy.gian.proposta.novaproposta.outrossistemas.RealizaAnaliseFinanceiraProposta;
 
 @RestController
 @RequestMapping("/proposta")
 public class PropostaController {
-
+			
 	@Autowired
 	private PropostaRepository propostaRepository;
+	
+	@Autowired
+	private RealizaAnaliseFinanceiraProposta analiseFinanceira;
 	
 	@PostMapping
 	@Transactional
@@ -38,6 +42,9 @@ public class PropostaController {
 					.body(new ErroDeFormularioDto("documento", "documento já cadastrado"));
 		}
 		
+		propostaRepository.save(proposta);
+	
+		proposta = analiseFinanceira.realizarAnaliseFinanceira(proposta);
 		propostaRepository.save(proposta);
 		
 		URI uri = uriBuilder.path("/proposta/{id}").buildAndExpand(proposta.getId()).toUri();

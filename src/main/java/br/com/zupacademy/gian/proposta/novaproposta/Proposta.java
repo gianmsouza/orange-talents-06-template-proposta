@@ -30,8 +30,11 @@ public class Proposta {
 	@Column(nullable = false)
 	private BigDecimal salarioBruto;
 
+	private String resultadoSolicitacao;
+
 	@Deprecated
-	public Proposta() {}
+	public Proposta() {
+	}
 
 	public Proposta(String documento, String email, String nome, String endereco, BigDecimal salarioBruto) {
 		this.documento = documento;
@@ -41,6 +44,17 @@ public class Proposta {
 		this.salarioBruto = salarioBruto;
 	}
 
+	public Proposta(Long id, String documento, String email, String nome, String endereco, 
+			BigDecimal salarioBruto, String resultadoSolicitacao) {
+		this.id = id;
+		this.documento = documento;
+		this.email = email;
+		this.nome = nome;
+		this.endereco = endereco;
+		this.salarioBruto = salarioBruto;
+		this.resultadoSolicitacao = resultadoSolicitacao;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -48,8 +62,24 @@ public class Proposta {
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public String getDocumento() {
 		return documento;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public BigDecimal getSalarioBruto() {
+		return salarioBruto;
+	}
+
+	public String getResultadoSolicitacao() {
+		return resultadoSolicitacao;
 	}
 }
