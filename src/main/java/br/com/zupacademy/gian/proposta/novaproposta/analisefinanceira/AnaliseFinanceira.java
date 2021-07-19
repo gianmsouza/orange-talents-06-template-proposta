@@ -1,11 +1,11 @@
-package br.com.zupacademy.gian.proposta.novaproposta.outrossistemas;
+package br.com.zupacademy.gian.proposta.novaproposta.analisefinanceira;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "analiseFinanceira", url = "http://localhost:9999/api/solicitacao")
+@FeignClient(name = "analiseFinanceira", url = "${url.analise.financeira}")
 public interface AnaliseFinanceira {
 
 	@RequestMapping(method = RequestMethod.POST)

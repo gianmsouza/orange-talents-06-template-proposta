@@ -1,4 +1,4 @@
-package br.com.zupacademy.gian.proposta.novaproposta.outrossistemas;
+package br.com.zupacademy.gian.proposta.novaproposta.analisefinanceira;
 
 import br.com.zupacademy.gian.proposta.novaproposta.Proposta;
 

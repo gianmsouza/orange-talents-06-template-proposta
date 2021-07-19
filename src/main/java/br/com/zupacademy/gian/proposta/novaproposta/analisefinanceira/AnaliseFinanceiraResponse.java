@@ -1,17 +1,21 @@
-package br.com.zupacademy.gian.proposta.novaproposta.outrossistemas;
+package br.com.zupacademy.gian.proposta.novaproposta.analisefinanceira;
 
 import br.com.zupacademy.gian.proposta.novaproposta.Proposta;
 
-public class AnaliseFinanceiraRequest {
+public class AnaliseFinanceiraResponse {
 
 	private String documento;
 	private String nome;
 	private String idProposta;
+	private ResultadoSolicitacao resultadoSolicitacao;
+	
+	public AnaliseFinanceiraResponse() {}
 
-	public AnaliseFinanceiraRequest(Proposta proposta) {
+	public AnaliseFinanceiraResponse(Proposta proposta) {
 		this.documento = proposta.getDocumento();
 		this.nome = proposta.getNome();
 		this.idProposta = proposta.getId().toString();
+		this.resultadoSolicitacao = ResultadoSolicitacao.COM_RESTRICAO;
 	}
 
 	public String getDocumento() {
@@ -24,5 +28,9 @@ public class AnaliseFinanceiraRequest {
 
 	public String getIdProposta() {
 		return idProposta;
+	}
+
+	public ResultadoSolicitacao getResultadoSolicitacao() {
+		return resultadoSolicitacao;
 	}
 }
