@@ -24,7 +24,7 @@ public class RealizaAnaliseFinanceiraProposta {
 		try {
 			analiseFinanceiraRes = analiseFinanceira.resultadoSolicitacao(analiseFinanceiraReq);
 		} catch (FeignException e) {
-			logger.info(e.getMessage());
+			logger.warn(e.getMessage());
 			analiseFinanceiraRes = new AnaliseFinanceiraResponse(proposta);
 		}		
 		

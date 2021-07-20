@@ -41,7 +41,7 @@ public class AssociaCartaoNaPropostaAgendamento {
 				Proposta propostaAtualizada = numeroCartao.toModel(proposta);
 				propostaRepository.save(propostaAtualizada);
 			} catch (FeignException e) {
-				logger.info(e.getMessage());
+				logger.warn(e.getMessage());
 			}			
 		}		
 	}
