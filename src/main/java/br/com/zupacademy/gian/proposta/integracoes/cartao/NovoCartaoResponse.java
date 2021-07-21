@@ -1,4 +1,4 @@
-package br.com.zupacademy.gian.proposta.novaproposta.cartao;
+package br.com.zupacademy.gian.proposta.integracoes.cartao;
 
 import br.com.zupacademy.gian.proposta.novaproposta.Proposta;
 

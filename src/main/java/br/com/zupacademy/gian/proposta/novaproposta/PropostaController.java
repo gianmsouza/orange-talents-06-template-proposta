@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.zupacademy.gian.proposta.compartilhado.ErroDeFormularioDto;
-import br.com.zupacademy.gian.proposta.novaproposta.analisefinanceira.RealizaAnaliseFinanceiraProposta;
+import br.com.zupacademy.gian.proposta.integracoes.analisefinanceira.RealizaAnaliseFinanceiraProposta;
 
 @RestController
 @RequestMapping("/proposta")

@@ -1,4 +1,4 @@
-package br.com.zupacademy.gian.proposta.novaproposta.analisefinanceira;
+package br.com.zupacademy.gian.proposta.integracoes.analisefinanceira;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
