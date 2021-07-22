@@ -15,7 +15,7 @@ public class RealizaAnaliseFinanceiraProposta {
 	private final Logger logger = LoggerFactory.getLogger(PropostaController.class);
 	
 	@Autowired
-	private AnaliseFinanceira analiseFinanceira;
+	private AnaliseFinanceiraFeignClient analiseFinanceira;
 
 	public Proposta realizarAnaliseFinanceira(Proposta proposta) {
 		AnaliseFinanceiraRequest analiseFinanceiraReq = new AnaliseFinanceiraRequest(proposta);		

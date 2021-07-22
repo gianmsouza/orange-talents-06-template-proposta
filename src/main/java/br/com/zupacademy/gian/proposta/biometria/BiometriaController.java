@@ -21,7 +21,7 @@ import br.com.zupacademy.gian.proposta.novaproposta.Proposta;
 import br.com.zupacademy.gian.proposta.novaproposta.PropostaRepository;
 
 @RestController
-@RequestMapping("/biometria")
+@RequestMapping("/biometrias")
 public class BiometriaController {
 	
 	@Autowired

@@ -20,7 +20,7 @@ public class AssociaCartaoNaPropostaAgendamento {
 	private final Logger logger = LoggerFactory.getLogger(AssociaCartaoNaPropostaAgendamento.class);
 	
 	@Autowired
-	private NovoCartao novoCartao;
+	private NovoCartaoFeignClient novoCartao;
 	
 	@Autowired
 	private PropostaRepository propostaRepository;

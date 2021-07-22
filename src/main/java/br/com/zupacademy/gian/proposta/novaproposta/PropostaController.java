@@ -22,7 +22,7 @@ import br.com.zupacademy.gian.proposta.compartilhado.ErroDeFormularioDto;
 import br.com.zupacademy.gian.proposta.integracoes.analisefinanceira.RealizaAnaliseFinanceiraProposta;
 
 @RestController
-@RequestMapping("/proposta")
+@RequestMapping("/propostas")
 public class PropostaController {
 			
 	@Autowired
