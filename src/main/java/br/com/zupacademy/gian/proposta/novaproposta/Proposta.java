@@ -100,8 +100,4 @@ public class Proposta {
 	public String getNumeroCartao() {
 		return numeroCartao;
 	}
-	
-	public void setEstadoProposta(String estadoProposta) {
-		this.estadoProposta = estadoProposta;
-	}
 }

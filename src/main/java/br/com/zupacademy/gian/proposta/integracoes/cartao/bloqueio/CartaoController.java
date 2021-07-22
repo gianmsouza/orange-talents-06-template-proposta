@@ -48,15 +48,17 @@ public class CartaoController {
 
 		try {
 			Proposta proposta = propostaOptional.get();
-			
-			bloqueioCartao.bloquearCartao(idCartao, new NovoBloqueioCartaoRequest());
+
+			NovoBloqueioCartaoResponse bloquearCartaoRes = bloqueioCartao.bloquearCartao(idCartao,
+					new NovoBloqueioCartaoRequest());
 			BloqueioCartao bloqueio = new BloqueioCartao(ip, userAgent, proposta.getNumeroCartao());
 			bloqueioRepository.save(bloqueio);
 			
-			proposta.setEstadoProposta("BLOQUEADO");		
+			proposta = bloquearCartaoRes.toModel(proposta);
+			System.out.println(proposta.getEstadoProposta());
 			propostaRepository.save(proposta);
-			return ResponseEntity.ok().build();
 			
+			return ResponseEntity.ok().build();
 		} catch (FeignException e) {
 			if (e.status() == 422) {
 				return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
