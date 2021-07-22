@@ -36,9 +36,9 @@ public class CartaoController {
 	@Transactional
 	public ResponseEntity<?> bloquearCartao(@PathVariable String idCartao, HttpServletRequest request) {
 
-		Optional<Proposta> proposta = propostaRepository.findByNumeroCartao(idCartao);
+		Optional<Proposta> propostaOptional = propostaRepository.findByNumeroCartao(idCartao);
 
-		if (!proposta.isPresent()) {
+		if (!propostaOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body(new ErroDeFormularioDto("cartao", "cartão não encontrado"));
 		}
@@ -47,10 +47,14 @@ public class CartaoController {
 		String userAgent = request.getHeader(HttpHeaders.USER_AGENT);
 
 		try {
+			Proposta proposta = propostaOptional.get();
+			
 			bloqueioCartao.bloquearCartao(idCartao, new NovoBloqueioCartaoRequest());
-
-			BloqueioCartao bloqueio = new BloqueioCartao(ip, userAgent, proposta.get().getNumeroCartao());
+			BloqueioCartao bloqueio = new BloqueioCartao(ip, userAgent, proposta.getNumeroCartao());
 			bloqueioRepository.save(bloqueio);
+			
+			proposta.setEstadoProposta("BLOQUEADO");		
+			propostaRepository.save(proposta);
 			return ResponseEntity.ok().build();
 			
 		} catch (FeignException e) {
