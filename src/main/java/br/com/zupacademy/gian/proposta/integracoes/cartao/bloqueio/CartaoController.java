@@ -55,7 +55,6 @@ public class CartaoController {
 			bloqueioRepository.save(bloqueio);
 			
 			proposta = bloquearCartaoRes.toModel(proposta);
-			System.out.println(proposta.getEstadoProposta());
 			propostaRepository.save(proposta);
 			
 			return ResponseEntity.ok().build();
