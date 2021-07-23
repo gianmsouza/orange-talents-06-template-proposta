@@ -21,7 +21,7 @@ import feign.FeignException;
 
 @RestController
 @RequestMapping("/cartoes")
-public class CartaoController {
+public class BloqueioCartaoController {
 
 	@Autowired
 	private PropostaRepository propostaRepository;
@@ -34,7 +34,8 @@ public class CartaoController {
 
 	@PostMapping("/{idCartao}/bloqueios")
 	@Transactional
-	public ResponseEntity<?> bloquearCartao(@PathVariable String idCartao, HttpServletRequest request) {
+	public ResponseEntity<?> bloquearCartao(@PathVariable (required = true) String idCartao, 
+			HttpServletRequest request) {
 
 		Optional<Proposta> propostaOptional = propostaRepository.findByNumeroCartao(idCartao);
 

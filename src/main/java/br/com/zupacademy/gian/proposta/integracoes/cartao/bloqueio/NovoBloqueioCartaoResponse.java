@@ -4,15 +4,15 @@ import br.com.zupacademy.gian.proposta.novaproposta.Proposta;
 
 public class NovoBloqueioCartaoResponse {
 	
-	private Resultado resultado;
+	private ResultadoBloqueio resultado;
 
 	public NovoBloqueioCartaoResponse() {}
 	
-	public NovoBloqueioCartaoResponse(Resultado resultado) {
+	public NovoBloqueioCartaoResponse(ResultadoBloqueio resultado) {
 		this.resultado = resultado;
 	}
 	
-	public Resultado getResultado() {
+	public ResultadoBloqueio getResultado() {
 		return resultado;
 	}
 
@@ -24,7 +24,7 @@ public class NovoBloqueioCartaoResponse {
 				proposta.getNome(), 
 				proposta.getEndereco(), 
 				proposta.getSalarioBruto(),
-				Resultado.BLOQUEADO.toString(),
+				ResultadoBloqueio.BLOQUEADO.toString(),
 				proposta.getNumeroCartao());
 	}
 }

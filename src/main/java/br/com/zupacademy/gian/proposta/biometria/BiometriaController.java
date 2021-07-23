@@ -32,7 +32,7 @@ public class BiometriaController {
 	
 	@PostMapping("/{idCartao}")
 	@Transactional
-	public ResponseEntity<?> salvarBiometria(@PathVariable String idCartao, 
+	public ResponseEntity<?> salvarBiometria(@PathVariable (required = true) String idCartao, 
 			@Valid @RequestBody NovaBiometriaRequest request, 
 			UriComponentsBuilder uriBuilder) {
 		
