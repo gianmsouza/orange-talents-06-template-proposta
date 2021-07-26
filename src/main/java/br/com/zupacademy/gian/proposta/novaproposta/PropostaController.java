@@ -20,10 +20,15 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.zupacademy.gian.proposta.compartilhado.ErroDeFormularioDto;
 import br.com.zupacademy.gian.proposta.integracoes.analisefinanceira.RealizaAnaliseFinanceiraProposta;
+import io.opentracing.Span;
+import io.opentracing.Tracer;
 
 @RestController
 @RequestMapping("/propostas")
 public class PropostaController {
+	
+	@Autowired
+	private Tracer tracer;
 			
 	@Autowired
 	private PropostaRepository propostaRepository;
@@ -44,6 +49,9 @@ public class PropostaController {
 			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
 					.body(new ErroDeFormularioDto("documento", "documento já cadastrado"));
 		}
+		
+		Span activeSpan = tracer.activeSpan();
+		activeSpan.setTag("proposta.email", proposta.getEmail());
 		
 		propostaRepository.save(proposta);
 	
