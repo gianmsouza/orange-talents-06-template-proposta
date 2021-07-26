@@ -1,4 +1,4 @@
-package br.com.zupacademy.gian.proposta.integracoes.cartao.aviso;
+package br.com.zupacademy.gian.proposta.integracoes.cartao.avisoviagem;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;

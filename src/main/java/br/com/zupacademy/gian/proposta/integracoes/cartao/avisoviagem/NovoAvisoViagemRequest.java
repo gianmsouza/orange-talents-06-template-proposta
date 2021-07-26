@@ -1,4 +1,4 @@
-package br.com.zupacademy.gian.proposta.integracoes.cartao.aviso;
+package br.com.zupacademy.gian.proposta.integracoes.cartao.avisoviagem;
 
 import java.time.LocalDate;
 
