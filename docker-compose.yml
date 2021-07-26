@@ -1,6 +1,6 @@
 version: '3'
 services: 
-      
+
   bd-proposta:
     image: mysql:8.0
     volumes:
@@ -29,7 +29,7 @@ services:
     networks:
       - proposta-network
     depends_on:
-      - bd-proposta
+      - bd-proposta  
       
   zookeeper:
     image: "confluentinc/cp-zookeeper:5.2.1"
@@ -152,14 +152,17 @@ services:
       COLLECTOR_ZIPKIN_HTTP_PORT: 9411
     networks:
       - proposta-network  
-
+      
   prometheus:
     image: prom/prometheus
     volumes:
-     - prometheus-volume:/etc/prometheus/
-    network_mode: bridge
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-volume:/etc/prometheus/
+    networks:
+      - proposta-network  
     ports:
-      - "9090:9090"
+      - 9090:9090
+    
 
   grafana:
     image: grafana/grafana

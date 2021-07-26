@@ -1,7 +1,6 @@
 package br.com.zupacademy.gian.proposta.seguranca;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,7 +10,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 @EnableWebSecurity
-@Profile("prod")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
@@ -19,9 +17,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests(authorizeRequests -> authorizeRequests
 				.antMatchers(HttpMethod.GET, "/proposta/**").hasAuthority("SCOPE_proposta:read")				
 				.antMatchers(HttpMethod.POST, "/proposta/**").hasAuthority("SCOPE_proposta:write")
+				.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
 				.anyRequest().authenticated())
-				.cors()
-		        .and()
 		        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		        .and()
 		        .csrf().disable()	
