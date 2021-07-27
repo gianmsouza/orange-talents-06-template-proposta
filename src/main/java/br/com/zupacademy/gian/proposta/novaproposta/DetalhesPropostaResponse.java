@@ -2,6 +2,8 @@ package br.com.zupacademy.gian.proposta.novaproposta;
 
 import java.math.BigDecimal;
 
+import br.com.zupacademy.gian.proposta.seguranca.CriptografaDocumento;
+
 public class DetalhesPropostaResponse {
 
 	private String documento;
@@ -12,7 +14,7 @@ public class DetalhesPropostaResponse {
 	private BigDecimal salarioBruto;
 	
 	public DetalhesPropostaResponse(Proposta proposta) {
-		this.documento = proposta.getDocumento();
+		this.documento = CriptografaDocumento.decrypt(proposta.getDocumento());
 		this.email = proposta.getEmail();
 		this.endereco = proposta.getEndereco();
 		this.nome = proposta.getNome();

@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 import br.com.zupacademy.gian.proposta.compartilhado.CpfOuCnpj;
+import br.com.zupacademy.gian.proposta.seguranca.CriptografaDocumento;
 
 public class NovaPropostaRequest {
 
@@ -38,7 +39,8 @@ public class NovaPropostaRequest {
 	}
 
 	public Proposta toModel() {
-		return new Proposta(this.documento, this.email, this.nome, this.endereco, this.salario);
+		String docEncriptografado = CriptografaDocumento.encrypt(this.documento);
+		return new Proposta(docEncriptografado, this.email, this.nome, this.endereco, this.salario);
 	}
 
 	public String getDocumento() {

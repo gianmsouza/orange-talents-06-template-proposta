@@ -15,8 +15,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests(authorizeRequests -> authorizeRequests
-				.antMatchers(HttpMethod.GET, "/proposta/**").hasAuthority("SCOPE_proposta:read")				
-				.antMatchers(HttpMethod.POST, "/proposta/**").hasAuthority("SCOPE_proposta:write")
+				.antMatchers(HttpMethod.GET, "/proposta/**").hasAuthority("SCOPE_proposta")				
+				.antMatchers(HttpMethod.POST, "/proposta/**").hasAuthority("SCOPE_proposta")
 				.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
 				.anyRequest().authenticated())
 		        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

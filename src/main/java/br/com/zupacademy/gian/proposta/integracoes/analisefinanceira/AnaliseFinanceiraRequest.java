@@ -1,6 +1,7 @@
 package br.com.zupacademy.gian.proposta.integracoes.analisefinanceira;
 
 import br.com.zupacademy.gian.proposta.novaproposta.Proposta;
+import br.com.zupacademy.gian.proposta.seguranca.CriptografaDocumento;
 
 public class AnaliseFinanceiraRequest {
 
@@ -9,7 +10,7 @@ public class AnaliseFinanceiraRequest {
 	private String idProposta;
 
 	public AnaliseFinanceiraRequest(Proposta proposta) {
-		this.documento = proposta.getDocumento();
+		this.documento = CriptografaDocumento.decrypt(proposta.getDocumento());
 		this.nome = proposta.getNome();
 		this.idProposta = proposta.getId().toString();
 	}
